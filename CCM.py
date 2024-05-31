@@ -184,10 +184,15 @@ def add_customer_ui():
         phone = phone_entry.get()
         company = company_entry.get()
         note = note_entry.get()
-        contact_interval = int(contact_interval_entry.get())
-        add_customer(name, phone, company, note, contact_interval)
-        add_window.destroy()
-        refresh_list()
+        try:
+            contact_interval = int(contact_interval_entry.get())
+            if contact_interval > 0:
+                add_customer(name, phone, company, note, contact_interval)
+                add_window.destroy()
+                refresh_list()
+        except :
+            null
+
 
     add_window = tk.Toplevel(root)
     add_window.title("Add Customer")
